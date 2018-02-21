@@ -43,7 +43,7 @@ int main()
         std::cout<<pazymiai[i]<<" ";
     }
     std::cout<<std::endl;
-    std::cout<<std::setprecision(10)<<galutinis;
+    std::cout<<std::setprecision(2)<<galutinis;
 
     return 0;
 }
