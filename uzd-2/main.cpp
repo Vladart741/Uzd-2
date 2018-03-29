@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <random>
 #include <fstream>
+#include <algorithm>
 
 int main()
 {
@@ -103,6 +104,10 @@ startas:
 
 		std::ofstream fr;
 		fr.open("Rezultatai.txt");
+
+		std::sort(Studentai.begin(), Studentai.end(), // SORTAS PAGAL VARDUS
+			[](const Duomenys &left, const Duomenys &right)
+		{ return (left.Vardas < right.Vardas); });
 
 		for (int i = 0; i != Studentai.size(); i++)
 		{
