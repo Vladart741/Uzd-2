@@ -1,0 +1,3 @@
+Pavarde             Vardas              Galutinis-vidurkis  Galutinis-mediana   
+Paulius             Pocius              8.67                9                   
+Augustinas          Makevièius          6.67                7                   
