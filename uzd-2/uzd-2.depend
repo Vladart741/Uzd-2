@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1519231836 source:c:\users\vladas\desktop\uzd-2\main.cpp
-	<iostream>
-	<string>
-	<vector>
-	<iomanip>
-	<random>
-

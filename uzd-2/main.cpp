@@ -1,82 +1,57 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <iomanip>
-#include <random>
-#include <fstream>
-#include <algorithm>
 #include "Funkcijos.h"
+#include <chrono>
 
 int main()
 {
-	std::cout << "Ar norite ivesti ranka(1), ar nuskaityti is failo(2)? ";
-startas:
-	int pasirinkimas;
-	std::cin >> pasirinkimas;
-	std::cout << std::endl;
+	std::string pav;
+	int n;
 
-	if (pasirinkimas == 1)
+	std::cout << "Iveskite:<" << std::endl;
+	std::cout << "(1) jei norite nuskatityti egzistuojanti faila." << std::endl;
+	std::cout << "(2) jei norite sugeneruoti nauja faila." << std::endl;
+
+	int ats;
+	std::cin >> ats;
+	if (ats == 1)
 	{
-		std::string vardas;
-		std::string pavarde;
-		int n;
-		int egzamino_balas;
-		double galutinis;
-		//double vidurkis;
-		std::vector<int> pazymiai_ranka;
+		std::cout << "Iveskite failo pavadinima: ";
+		std::cin >> pav;
 
-		std::cout << "Iveskite varda, pavarde, egz paz" << std::endl;
+		auto start = std::chrono::high_resolution_clock::now();
 
-		std::cin >> vardas >> pavarde >> n >> egzamino_balas;
+		Output(pav);
 
-		std::default_random_engine nr;
-		std::uniform_int_distribution<int> uniform_dist(1, 10);
-
-		/*start: // Galima ivesti kiek norima pazymiu i vectoriu
-		int x;
-		if(x!=0)
-		{
-		std::cin>>x;
-		pazymiai_ranka.push_back(x);
-		n++; // prie int n reikia pakeist i int n=0
-		goto start;
-		}*/
-
-		int suma = 0;
-		for (int i = 0; i < n; i++)
-		{
-			int x = uniform_dist(nr);
-			pazymiai_ranka.push_back(x);
-			suma = suma + x;
-		}
-		galutinis = 0.4*(suma / n) + 0.6*egzamino_balas;
-		std::cout << vardas << " " << pavarde << std::endl;
-		for (int i = 0; i < n; i++)
-		{
-			std::cout << pazymiai_ranka[i] << " ";
-		}
-		std::cout << std::endl;
-		std::cout << std::setprecision(2) << galutinis;
-		return 0;
+		auto finish = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<double> elapsed = finish - start;
+		std::cout << "Programos vykdymo laikas: " << elapsed.count() << " s\n";
+		std::cin >> n;
 	}
-
-	else if (pasirinkimas == 2)
+	else if (ats == 2)
 	{
-		try
-		{
-			Nuskaitymas();
-			Spausdinimas();
-		}
-		catch (std::exception& e)
-		{
-			std::cerr << "Nerastas Input_Output.cpp failas!";
-		}
-	}
+		pav = "Duomenys.txt";
+		std::cout << "Iveskite failo dydi: ";
+		std::cin >> n;
 
+		auto start = std::chrono::high_resolution_clock::now();
+
+		Failu_Generatorius(pav, n);
+		Output(pav);
+
+		auto finish = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<double> elapsed = finish - start;
+		std::cout << "Programos vykdymo laikas: " << elapsed.count() << " s\n";
+		std::cin >> n;
+	}
 	else
 	{
-		std::cout << "Iveskite 1 jei norite ivesti duomenys ranka, arba 2 jei norite nuskaityti is failo" << std::endl;
-		goto startas;
+		std::cout << "Iveskite:<" << std::endl;
+		std::cout << "SKAICIU (1) jei norite nuskatityti egzistuojanti faila." << std::endl;
+		std::cout << "SKAICIU (2) jei norite sugeneruoti nauja faila." << std::endl;
 	}
+
+	
+
 	return 0;
 }
