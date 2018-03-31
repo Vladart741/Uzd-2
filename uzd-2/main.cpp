@@ -9,13 +9,15 @@ int main()
 	int n;
 
 	std::cout << "Iveskite:<" << std::endl;
-	std::cout << "(1) jei norite nuskatityti egzistuojanti faila." << std::endl;
-	std::cout << "(2) jei norite sugeneruoti nauja faila." << std::endl;
+	
+	std::cout << "(1) jei norite sugeneruoti nauja faila." << std::endl;
+	std::cout << "(2) jei norite nuskatityti egzistuojanti faila." << std::endl;
 	std::cout << "(3) jei norite sugeneruoti ir nuskaityti nauja faila." << std::endl;
+	std::cout << "(4) jei norite nuskatityti egzistuojanti faila pagal PIRMA STRATEGIJA" << std::endl;
 
 	int ats;
 	std::cin >> ats;
-	if (ats == 1)
+	if (ats == 2)
 	{
 		std::cout << "Iveskite failo pavadinima: ";
 		std::cin >> pav;
@@ -82,7 +84,7 @@ int main()
 
 		system("pause");
 	}
-	else if (ats == 2)
+	else if (ats == 1)
 	{
 		std::cout << "Iveskite failo pavadinima: ";
 		std::cin >> pav;
@@ -96,6 +98,38 @@ int main()
 		std::cout << std::endl;
 		main();
 	}
+	else if (ats == 4)
+	{
+		std::cout << "Iveskite failo pavadinima: ";
+		std::cin >> pav;
+		/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
+		auto start1 = std::chrono::high_resolution_clock::now();
+
+		InputOutput_VEKTORIUS_Pirma_Strategija(pav);
+
+		auto finish1 = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<double> elapsed1 = finish1 - start1;
+		std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
+		/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
+		auto start2 = std::chrono::high_resolution_clock::now();
+
+		InputOutput_LISTAI_Pirma_Strategija(pav);
+
+		auto finish2 = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<double> elapsed2 = finish2 - start2;
+		std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
+		/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
+		auto start3 = std::chrono::high_resolution_clock::now();
+
+		InputOutput_DEKAI_Pirma_Strategija(pav);
+
+		auto finish3 = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<double> elapsed3 = finish3 - start3;
+		std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
+
+		system("pause");
+	}
+
 
 	else
 	{

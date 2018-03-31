@@ -1,3 +1,12 @@
+﻿# 1.0v
+Gauti rezultatai naudojant pirma strategija:
+
+|            |      10      |     100      |    1000    |   10000   |  100000  |
+|------------| ------------ | ------------ | ---------- |-----------|----------|
+| Vector     | 0.0064869 s  | 0.0365281 s  | 0.288937 s | 3.20637 s | 31.3955 s|
+| List       | 0.00911129 s | 0.0487083 s  | 0.361323 s | 3.6171 s  | 33.9164 s|
+| Deque      | 0.00552414 s | 0.0490911 s  | 0.479989 s | 4.48342 s | 42.9406 s|
+
 # 0.5v
 Išmatuota programos veikimo sparta naudojant visus konteinerius (vector, list, deque). Gautus rezultatus galite matyti žemiau pateiktoje lentelėje.
 

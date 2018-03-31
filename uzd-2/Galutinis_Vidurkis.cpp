@@ -3,7 +3,7 @@
 #include <deque>
 
 // VEKTORIAI
-double Galutinis_Vidurkis(std::vector<int>pazymiai, int egzaminas)
+double Galutinis_Vidurkis(std::vector<double>pazymiai, double egzaminas)
 {
 	double nd_suma = 0;
 	for (int i = 0; i != pazymiai.size(); i++)
@@ -15,7 +15,7 @@ double Galutinis_Vidurkis(std::vector<int>pazymiai, int egzaminas)
 	return galutinis_vidurkis;
 }
 // LISTAI
-double Galutinis_Vidurkis(std::list<int>pazymiai, int egzaminas)
+double Galutinis_Vidurkis(std::list<double>pazymiai, double egzaminas)
 {
 	double nd_suma = 0;
 	for (auto i : pazymiai)
@@ -27,7 +27,7 @@ double Galutinis_Vidurkis(std::list<int>pazymiai, int egzaminas)
 	return galutinis_vidurkis;
 }
 // DEKAI
-double Galutinis_Vidurkis(std::deque<int>pazymiai, int egzaminas)
+double Galutinis_Vidurkis(std::deque<double>pazymiai, double egzaminas)
 {
 	double nd_suma = 0;
 	for (int i = 0; i != pazymiai.size(); i++)

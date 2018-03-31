@@ -32,8 +32,8 @@ void InputOutput_VEKTORIUS(std::string pav)
 		{
 			std::string Vardas;
 			std::string Pavarde;
-			std::vector<int>pazymiai;
-			int egzaminas;
+			std::vector<double>pazymiai;
+			double egzaminas;
 			fd >> Vardas;
 			fd >> Pavarde;
 			for (int i = 0; i < 5; i++)
@@ -124,13 +124,13 @@ void InputOutput_DEKAI(std::string pav)
 		{
 			std::string Vardas;
 			std::string Pavarde;
-			std::deque<int>pazymiai;
-			int egzaminas;
+			std::deque<double>pazymiai;
+			double egzaminas;
 			fd >> Vardas;
 			fd >> Pavarde;
 			for (int i = 0; i < 5; i++)
 			{
-				int x;
+				double x;
 				fd >> x;
 				pazymiai.push_back(x);
 			}
@@ -216,13 +216,13 @@ void InputOutput_LISTAI(std::string pav)
 		{
 			std::string Vardas;
 			std::string Pavarde;
-			std::list<int>pazymiai;
-			int egzaminas;
+			std::list<double>pazymiai;
+			double egzaminas;
 			fd >> Vardas;
 			fd >> Pavarde;
 			for (int i = 0; i < 5; i++)
 			{
-				int x;
+				double x;
 				fd >> x;
 				pazymiai.push_back(x);
 			}
