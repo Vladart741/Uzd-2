@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <random>
 #include <fstream>
-#include <chrono>
 #include "Struktura.h"
 #include "Funkcijos.h"
 #include <iomanip>
@@ -11,7 +9,6 @@
 
 void Failu_Generatorius(std::string pav, int n)
 {
-	std::vector<Duomenys>Studentai;
 	std::ofstream fr;
 	fr.open(pav);
 
@@ -30,32 +27,21 @@ void Failu_Generatorius(std::string pav, int n)
 		std::string sk = std::to_string(x);
 
 		Vardas = Vardas + sk;
+		fr.width(15); fr << std::left << Vardas;
 
 		Pavarde = Pavarde + sk;
-
-		std::vector<int>pazymiai;
+		fr.width(15); fr << std::left << Pavarde;
 
 		for (int j = 0; j < 5; j++)
 		{
 			int x = gen1(nr);
-			pazymiai.push_back(x);
+			fr.width(15); fr << std::left << x;
 		}
 		egzaminas = gen1(nr);
-		Duomenys smth = { Vardas, Pavarde, pazymiai, egzaminas };
-		Studentai.push_back(smth);
+		fr.width(15); fr << std::left << egzaminas;
 
-		//SPAUSDINIMAS
-		fr.width(15); fr << std::left << Studentai[i].Vardas;
-		fr.width(15); fr << std::left << Studentai[i].Pavarde;
-		for (int j = 0; j < 5; j++)
-		{
-			fr.width(15); fr << std::left << Studentai[i].pazymiai[j];
-		}
-		fr.width(15); fr << std::left << Studentai[i].egzaminas;
 		fr << std::endl;
-		
+
 	}
-
-
 	fr.close();
 }
