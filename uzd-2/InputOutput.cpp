@@ -3,9 +3,8 @@
 #include <vector>
 #include <deque>
 #include <list>
-#include <random>
+#include <algorithm>
 #include <fstream>
-#include <chrono>
 #include "Struktura.h"
 #include "Funkcijos.h"
 #include <iomanip>
@@ -50,7 +49,6 @@ void InputOutput_VEKTORIUS(std::string pav)
 			// SKAICIAVIMAI GAL_VID, GAL_MED IR RUSIAVIMAS
 			Studentai[i].galutinis_vidurkis = Galutinis_Vidurkis(Studentai[i].pazymiai, Studentai[i].egzaminas);
 			Studentai[i].galutinis_mediana = Galutinis_Mediana(Studentai[i].pazymiai, Studentai[i].egzaminas);
-			Studentai[i].rusiavimas = Rusiavimas(Studentai[i].galutinis_vidurkis);
 
 			i++;
 		}
@@ -58,6 +56,7 @@ void InputOutput_VEKTORIUS(std::string pav)
 	// SORTAS PAGAL VARDUS
 	std::sort(Studentai.begin(), Studentai.end(), [](const Duomenys_Vektoriai &left, const Duomenys_Vektoriai &right)
 	{ return (left.Vardas < right.Vardas); });
+
 	fd.close();
 
 
@@ -89,11 +88,11 @@ void InputOutput_VEKTORIUS(std::string pav)
 		fr.width(15); fr << std::left << Studentai[i].egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << Studentai[i].galutinis_vidurkis;
 		fr.width(20); fr << std::left << Studentai[i].galutinis_mediana;
-		if (Studentai[i].rusiavimas == true)
+		if (Studentai[i].galutinis_vidurkis >= 5)
 		{
 			fr.width(20); fr << std::left << "Kietiakas";
 		}
-		else if (Studentai[i].rusiavimas == false)
+		else if (Studentai[i].galutinis_vidurkis < 5)
 		{
 			fr.width(20); fr << std::left << "Vargsiukas";
 		}
@@ -142,7 +141,6 @@ void InputOutput_DEKAI(std::string pav)
 			// SKAICIAVIMAI GAL_VID, GAL_MED IR RUSIAVIMAS
 			Studentai[i].galutinis_vidurkis = Galutinis_Vidurkis(Studentai[i].pazymiai, Studentai[i].egzaminas);
 			Studentai[i].galutinis_mediana = Galutinis_Mediana(Studentai[i].pazymiai, Studentai[i].egzaminas);
-			Studentai[i].rusiavimas = Rusiavimas(Studentai[i].galutinis_vidurkis);
 
 			i++;
 		}
@@ -181,11 +179,11 @@ void InputOutput_DEKAI(std::string pav)
 		fr.width(15); fr << std::left << Studentai[i].egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << Studentai[i].galutinis_vidurkis;
 		fr.width(20); fr << std::left << Studentai[i].galutinis_mediana;
-		if (Studentai[i].rusiavimas == true)
+		if (Studentai[i].galutinis_vidurkis >= 5)
 		{
 			fr.width(20); fr << std::left << "Kietiakas";
 		}
-		else if (Studentai[i].rusiavimas == false)
+		else if (Studentai[i].galutinis_vidurkis < 5)
 		{
 			fr.width(20); fr << std::left << "Vargsiukas";
 		}
@@ -229,9 +227,8 @@ void InputOutput_LISTAI(std::string pav)
 			fd >> egzaminas;
 			double Gal_vid = Galutinis_Vidurkis(pazymiai, egzaminas);
 			double Gal_med = Galutinis_Mediana(pazymiai, egzaminas);
-			bool rusiavimas = Rusiavimas(Gal_vid);
 
-			Duomenys_Listai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med,rusiavimas };
+			Duomenys_Listai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med};
 			Studentai.push_back(something);
 
 			i++;
@@ -271,11 +268,11 @@ void InputOutput_LISTAI(std::string pav)
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-		if (i.rusiavimas == true)
+		if (i.galutinis_vidurkis >= 5)
 		{
 			fr.width(20); fr << std::left << "Kietiakas";
 		}
-		else if (i.rusiavimas == false)
+		else if (i.galutinis_vidurkis < 5)
 		{
 			fr.width(20); fr << std::left << "Vargsiukas";
 		}
