@@ -1,4 +1,13 @@
-﻿# 0.4v
+# Vertinimo pastabos
+
+1. Be algoritmų panaudojimo (v0.5) vector turėjo veikti gerokai lėčiau, negu su algoritmais.
+2. Kažkodėl List veikia lėčiausiai, nors turėtų būti atvirsčiai. Čia matyt todėl, kad abi strategijos realizuotos tik su algoritmais.
+2. Programa "užlūšta" jeigu įvedamas ne skaičius iš [1,5] intervalo.
+3. Header GUARD faile 'Struktura.h' yra neteisingas.	
+
+
+
+# 0.4v
 0,4v pakeisti keli headeriai, pridėtas failų generatorius pagal vartotojo poreikius (galima nustatyti norima failo dydį, t.y. 10, 100, 1000 ir t.t. random studentų). Įvykdyti matavimai parodė, kad generuojant ir apdorojant duomenis programa atliko tai per:
 
 |            |      10      |     100      |    1000    |   10000   |  100000  |
