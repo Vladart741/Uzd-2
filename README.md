@@ -2,8 +2,9 @@
 
 1. Be algoritmų panaudojimo (v0.5) vector turėjo veikti gerokai lėčiau, negu su algoritmais.
 2. Kažkodėl List veikia lėčiausiai, nors turėtų būti atvirsčiai. Čia matyt todėl, kad abi strategijos realizuotos tik su algoritmais.
-2. Programa "užlūšta" jeigu įvedamas ne skaičius iš [1,5] intervalo.
-3. Header GUARD faile 'Struktura.h' yra neteisingas.	
+3. Programa "užlūšta" jeigu įvedamas ne skaičius iš [1,5] intervalo.
+4. Header GUARD faile 'Struktura.h' yra neteisingas.
+5. Truksta v0.5 releaso.
 
 
 
