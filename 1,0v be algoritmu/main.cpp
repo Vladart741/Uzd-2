@@ -105,6 +105,7 @@ int main()
 	{
 		std::cout << "Jei norite nuskaityti 1 faila, iveskite (1) " << std::endl;
 		std::cout << "Jei norite nuskaityti visus failus, iveskite (5) " << std::endl;
+		taskas:
 		std::cin >> ats;
 		if (ats == "1")
 		{
@@ -263,11 +264,18 @@ int main()
 			fr << "Programos vykdymo laikas su vektoriais: " << elapsed5.count() << " s\n";
 			} // LISTU REZ
 		}
+		else
+		{
+			std::cout << "SKAICIU (1) Jei norite nuskaityti 1 faila" << std::endl;
+			std::cout << "SKAICIU (5) Jei norite nuskaityti visus failus" << std::endl;
+			goto taskas;
+		}
 	}
 	else if (ats == "5")
 	{
 		std::cout << "Jei norite nuskaityti 1 faila, iveskite (1) "<< std::endl;
 		std::cout << "Jei norite nuskaityti visus failus, iveskite (5) " << std::endl;
+		taskas:
 		std::cin >> ats;
 		if (ats == "1")
 		{
@@ -425,6 +433,12 @@ int main()
 			std::chrono::duration<double> elapsed5 = finish5 - start5;
 			fr << "Programos vykdymo laikas su vektoriais: " << elapsed5.count() << " s\n";
 			} // LISTU REZ
+		}
+		else
+		{
+			std::cout << "SKAICIU (1) Jei norite nuskaityti 1 faila" << std::endl;
+			std::cout << "SKAICIU (5) Jei norite nuskaityti visus failus" << std::endl;
+			goto taskas;
 		}
 	}
 
