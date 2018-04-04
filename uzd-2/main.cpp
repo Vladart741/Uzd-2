@@ -17,9 +17,10 @@ int main()
 	std::cout << "(4) jei norite nuskatityti egzistuojanti faila pagal PIRMA STRATEGIJA" << std::endl;
 	std::cout << "(5) jei norite nuskatityti egzistuojanti faila pagal ANTRA STRATEGIJA" << std::endl;
 
-	int ats;
+	pradzia:
+	std::string ats;
 	std::cin >> ats;
-	if (ats == 2)
+	if (ats == "2")
 	{
 		std::cout << "Iveskite failo pavadinima: ";
 		std::cin >> pav;
@@ -48,7 +49,7 @@ int main()
 
 		system("pause");
 	}
-	else if (ats == 3)
+	else if (ats == "3")
 	{
 		pav = "Duomenys.txt";
 		std::cout << "Iveskite failo dydi: ";
@@ -86,7 +87,7 @@ int main()
 
 		system("pause");
 	}
-	else if (ats == 1)
+	else if (ats == "1")
 	{
 		std::cout << "Iveskite failo pavadinima: ";
 		std::cin >> pav;
@@ -100,12 +101,13 @@ int main()
 		std::cout << std::endl;
 		main();
 	}
-	else if (ats == 4)
+	else if (ats == "4")
 	{
 		std::cout << "Jei norite nuskaityti 1 faila, iveskite (1) " << std::endl;
 		std::cout << "Jei norite nuskaityti visus failus, iveskite (5) " << std::endl;
+		taskas:
 		std::cin >> ats;
-		if (ats == 1)
+		if (ats == "1")
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
@@ -136,7 +138,7 @@ int main()
 
 			system("pause");
 		}
-		else if (ats == 5)
+		else if (ats == "5")
 		{
 			{std::ofstream fr("VEKTORIAI_REZULTATAI.txt");
 			auto start1 = std::chrono::high_resolution_clock::now();
@@ -262,13 +264,20 @@ int main()
 			fr << "Programos vykdymo laikas su vektoriais: " << elapsed5.count() << " s\n";
 			} // LISTU REZ
 		}
+		else
+		{
+			std::cout << "SKAICIU (1) Jei norite nuskaityti 1 faila" << std::endl;
+			std::cout << "SKAICIU (5) Jei norite nuskaityti visus failus" << std::endl;
+			goto taskas;
+		}
 	}
-	else if (ats == 5)
+	else if (ats == "5")
 	{
 		std::cout << "Jei norite nuskaityti 1 faila, iveskite (1) "<< std::endl;
 		std::cout << "Jei norite nuskaityti visus failus, iveskite (5) " << std::endl;
+		taskas:
 		std::cin >> ats;
-		if (ats == 1)
+		if (ats == "1")
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
@@ -299,7 +308,7 @@ int main()
 
 			system("pause");
 		}
-		else if (ats == 5)
+		else if (ats == "5")
 		{
 			{std::ofstream fr("VEKTORIAI_REZULTATAI.txt");
 			auto start1 = std::chrono::high_resolution_clock::now();
@@ -425,6 +434,12 @@ int main()
 			fr << "Programos vykdymo laikas su vektoriais: " << elapsed5.count() << " s\n";
 			} // LISTU REZ
 		}
+		else
+		{
+			std::cout << "SKAICIU (1) Jei norite nuskaityti 1 faila" << std::endl;
+			std::cout << "SKAICIU (5) Jei norite nuskaityti visus failus" << std::endl;
+			goto taskas;
+		}
 	}
 
 
@@ -436,6 +451,7 @@ int main()
 		std::cout << "SKAICIU (3) jei norite sugeneruoti ir nuskaityti nauja faila." << std::endl;
 		std::cout << "SKAICIU (4) jei norite nuskatityti egzistuojanti faila pagal PIRMA STRATEGIJA" << std::endl;
 		std::cout << "SKAICIU (5) jei norite nuskatityti egzistuojanti faila pagal ANTRA STRATEGIJA" << std::endl;
+		goto pradzia;
 	}
 
 
