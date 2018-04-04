@@ -3,8 +3,8 @@
 #include <deque>
 #include <list>
 
-#ifndef KINTAMIEJI_H
-#define KINTAMIEJI_H
+#ifndef STRUKTURA_H
+#define STRUKTURA_H
 
 struct Duomenys_Vektoriai
 {
