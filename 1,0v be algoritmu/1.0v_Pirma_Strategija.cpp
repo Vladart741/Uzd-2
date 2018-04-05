@@ -9,11 +9,11 @@
 #include "Funkcijos.h"
 #include <iomanip>
 
-bool Pagal_Varda_Vektoriai(const Duomenys_Vektoriai& x, const Duomenys_Vektoriai& y) { return x.Vardas < y.Vardas; }
-bool Pagal_Varda_Listai(const Duomenys_Listai& x, const Duomenys_Listai& y) { return x.Vardas < y.Vardas; }
-bool Pagal_Varda_Dekai(const Duomenys_Dekai& x, const Duomenys_Dekai& y) { return x.Vardas < y.Vardas; }
+//bool Pagal_Varda_Vektoriai(const Duomenys_Vektoriai& x, const Duomenys_Vektoriai& y) { return x.Vardas < y.Vardas; }
+//bool Pagal_Varda_Listai(const Duomenys_Listai& x, const Duomenys_Listai& y) { return x.Vardas < y.Vardas; }
+//bool Pagal_Varda_Dekai(const Duomenys_Dekai& x, const Duomenys_Dekai& y) { return x.Vardas < y.Vardas; }
 
-/*struct rusiavimas_vektoriai_vargsiukai 
+struct rusiavimas_vektoriai_vargsiukai 
 {
 	bool operator() (const Duomenys_Vektoriai& a)
 	{
@@ -99,7 +99,7 @@ struct rusiavimas_dekai_kietiakai
 		}
 	}
 };
-*/
+
 
 
 void InputOutput_VEKTORIUS_Pirma_Strategija(std::string pav)
@@ -119,7 +119,7 @@ void InputOutput_VEKTORIUS_Pirma_Strategija(std::string pav)
 	}
 	else
 	{
-
+		int i = 0;
 		while (!fd.eof())
 		{
 			std::string Vardas;
@@ -142,28 +142,16 @@ void InputOutput_VEKTORIUS_Pirma_Strategija(std::string pav)
 
 			Duomenys_Vektoriai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med};
 			Studentai.push_back(something);
-
-			if (Gal_vid < 5)
-			{
-				Vargsiukai.push_back(something);
-			}
-			else if (Gal_vid >= 5)
-			{
-				Kietiakai.push_back(something);
-			}
-			
 		}
 	}
 	// SORTAS PAGAL VARDUS
-	std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Vektoriai);
+	//std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Vektoriai);
 
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai),rusiavimas_vektoriai_vargsiukai());
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_vektoriai_kietiakai());
-
-	
-
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai),rusiavimas_vektoriai_vargsiukai());
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_vektoriai_kietiakai());
 
 	fd.close();
+	
 
 
 	std::ofstream fr;
@@ -231,6 +219,7 @@ void InputOutput_DEKAI_Pirma_Strategija(std::string pav)
 	}
 	else
 	{
+		int i = 0;
 		while (!fd.eof())
 		{
 			std::string Vardas;
@@ -254,25 +243,16 @@ void InputOutput_DEKAI_Pirma_Strategija(std::string pav)
 			Duomenys_Dekai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med};
 			Studentai.push_back(something);
 
-			if (Gal_vid < 5)
-			{
-				Vargsiukai.push_back(something);
-			}
-			else if (Gal_vid >= 5)
-			{
-				Kietiakai.push_back(something);
-			}
-
+			
 		}
 	}
 	// SORTAS PAGAL VARDUS
-	std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Dekai);
+	//std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Dekai);
 
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_dekai_vargsiukai());
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_dekai_kietiakai());
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_dekai_vargsiukai());
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_dekai_kietiakai());
 
 	fd.close();
-
 
 
 	std::ofstream fr;
@@ -341,6 +321,7 @@ void InputOutput_LISTAI_Pirma_Strategija(std::string pav)
 	}
 	else
 	{
+		int i = 0;
 		while (!fd.eof())
 		{
 			std::string Vardas;
@@ -362,24 +343,14 @@ void InputOutput_LISTAI_Pirma_Strategija(std::string pav)
 			Duomenys_Listai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med};
 			Studentai.push_back(something);
 
-			if (Gal_vid < 5)
-			{
-				Vargsiukai.push_back(something);
-			}
-			else if (Gal_vid >= 5)
-			{
-				Kietiakai.push_back(something);
-			}
-
+			i++;
 		}
 	}
 
-	
+	//Studentai.sort(Pagal_Varda_Listai); // SORTAS PAGAL VARDUS
 
-	Studentai.sort(Pagal_Varda_Listai); // SORTAS PAGAL VARDUS
-
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_listai_vargsiukai());
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_listai_kietiakai());
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_listai_vargsiukai());
+	std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Kietiakai), rusiavimas_listai_kietiakai());
 
 
 	fd.close();
