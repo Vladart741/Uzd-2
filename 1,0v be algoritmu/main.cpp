@@ -275,7 +275,7 @@ int main()
 	{
 		std::cout << "Jei norite nuskaityti 1 faila, iveskite (1) "<< std::endl;
 		std::cout << "Jei norite nuskaityti visus failus, iveskite (5) " << std::endl;
-		taskas:
+		taskas2:
 		std::cin >> ats;
 		if (ats == "1")
 		{
@@ -438,7 +438,7 @@ int main()
 		{
 			std::cout << "SKAICIU (1) Jei norite nuskaityti 1 faila" << std::endl;
 			std::cout << "SKAICIU (5) Jei norite nuskaityti visus failus" << std::endl;
-			goto taskas;
+			goto taskas2;
 		}
 	}
 
