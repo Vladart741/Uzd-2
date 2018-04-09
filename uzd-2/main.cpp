@@ -24,28 +24,7 @@ pradzia:
 	{
 		std::cout << "Iveskite failo pavadinima: ";
 		std::cin >> pav;
-		/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start1 = std::chrono::high_resolution_clock::now();
-
-		InputOutput_VEKTORIUS(pav);
-
-		auto finish1 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed1 = finish1 - start1;
-		std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-		/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start2 = std::chrono::high_resolution_clock::now();
-
-		InputOutput_LISTAI(pav);
-
-		auto finish2 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed2 = finish2 - start2;
-		std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-		/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start3 = std::chrono::high_resolution_clock::now();
-		InputOutput_DEKAI(pav);
-		auto finish3 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed3 = finish3 - start3;
-		std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
+		pradedam_InputOutput(pav);
 
 		system("pause");
 	}
@@ -57,33 +36,7 @@ pradzia:
 
 
 		Failu_Generatorius(pav, n);
-		/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start1 = std::chrono::high_resolution_clock::now();
-
-		Failu_Generatorius(pav, n);
-		InputOutput_VEKTORIUS(pav);
-
-		auto finish1 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed1 = finish1 - start1;
-		std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-		/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start2 = std::chrono::high_resolution_clock::now();
-
-		Failu_Generatorius(pav, n);
-		InputOutput_LISTAI(pav);
-
-		auto finish2 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed2 = finish2 - start2;
-		std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-		/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-		auto start3 = std::chrono::high_resolution_clock::now();
-
-		Failu_Generatorius(pav, n);
-		InputOutput_DEKAI(pav);
-
-		auto finish3 = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsed3 = finish3 - start3;
-		std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
+		pradedam_InputOutput(pav);
 
 		system("pause");
 	}
@@ -111,30 +64,7 @@ pradzia:
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
-			/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start1 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_VEKTORIUS_Pirma_Strategija(pav);
-
-			auto finish1 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed1 = finish1 - start1;
-			std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-			/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start2 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_LISTAI_Pirma_Strategija(pav);
-
-			auto finish2 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed2 = finish2 - start2;
-			std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-			/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start3 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_DEKAI_Pirma_Strategija(pav);
-
-			auto finish3 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed3 = finish3 - start3;
-			std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
+			pradedam_su_algoritmais_pirma_str(pav);		
 
 			system("pause");
 		}
@@ -142,31 +72,7 @@ pradzia:
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
-			/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start1 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_VEKTORIUS_Pirma_Strategija_BE_ALGORITMU(pav);
-
-			auto finish1 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed1 = finish1 - start1;
-			std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-			/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start2 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_LISTAI_Pirma_Strategija_BE_ALGORITMU(pav);
-
-			auto finish2 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed2 = finish2 - start2;
-			std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-			/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start3 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_DEKAI_Pirma_Strategija_BE_ALGORITMU(pav);
-
-			auto finish3 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed3 = finish3 - start3;
-			std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
-
+			pradedam_be_algoritmu_pirma_str(pav);
 			system("pause");
 		}
 		else
@@ -186,61 +92,14 @@ pradzia:
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
-			/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start1 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_VEKTORIUS_Antra_Strategija(pav);
-
-			auto finish1 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed1 = finish1 - start1;
-			std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-			/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start2 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_LISTAI_Antra_Strategija(pav);
-
-			auto finish2 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed2 = finish2 - start2;
-			std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-			/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start3 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_DEKAI_Antra_Strategija(pav);
-
-			auto finish3 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed3 = finish3 - start3;
-			std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
-
+			pradedam_su_algoritmais_antra_str(pav);
 			system("pause");
 		}
 		else if (ats == "2")
 		{
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> pav;
-			/////////////////////////////////////////////////////// VEKTORIAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start1 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(pav);
-
-			auto finish1 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed1 = finish1 - start1;
-			std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
-			/////////////////////////////////////////////////////// LISTAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start2 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_LISTAI_Antra_Strategija_BE_ALGORITMU(pav);
-
-			auto finish2 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed2 = finish2 - start2;
-			std::cout << "Programos vykdymo laikas su list: " << elapsed2.count() << " s\n";
-			/////////////////////////////////////////////////////// DEKAI ////////////////////////////////////////////////////////////////////////////////////
-			auto start3 = std::chrono::high_resolution_clock::now();
-
-			InputOutput_DEKAI_Antra_Strategija_BE_ALGORITMU(pav);
-
-			auto finish3 = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> elapsed3 = finish3 - start3;
-			std::cout << "Programos vykdymo laikas su deque: " << elapsed3.count() << " s\n";
+			pradedam_be_algoritmu_antra_str(pav);
 
 			system("pause");
 		}

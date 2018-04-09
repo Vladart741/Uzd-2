@@ -8,62 +8,25 @@
 #include "Struktura.h"
 #include "Funkcijos.h"
 #include <iomanip>
+#include <chrono>
 
-bool Pagal_Varda_Vektoriai_2(const Duomenys_Vektoriai& x, const Duomenys_Vektoriai& y) { return x.Vardas < y.Vardas; }
-bool Pagal_Varda_Listai_2(const Duomenys_Listai& x, const Duomenys_Listai& y) { return x.Vardas < y.Vardas; }
-bool Pagal_Varda_Dekai_2(const Duomenys_Dekai& x, const Duomenys_Dekai& y) { return x.Vardas < y.Vardas; }
+bool Pagal_Varda_Vektoriai2(const Duomenys& x, const Duomenys& y) { return x.Vardas < y.Vardas; }
+bool Pagal_Varda_Listai2(const Duomenys& x, const Duomenys& y) { return x.Vardas < y.Vardas; }
+bool Pagal_Varda_Dekai2(const Duomenys& x, const Duomenys& y) { return x.Vardas < y.Vardas; }
 
-/*struct rusiavimas_vektoriai_vargsiukai
+std::vector<Duomenys>Studentai_Vektoriai_2str_be_alg;
+std::list<Duomenys>Studentai_Listai_2str_be_alg;
+std::deque<Duomenys>Studentai_Dekai_2str_be_alg;
+void pradedam_be_algoritmu_antra_str(std::string pav)
 {
-bool operator() (const Duomenys_Vektoriai& a)
-{
-if (a.galutinis_vidurkis < 5)
-{
-return true;
+	nuskaitymas_2str_be_alg(pav);
+	InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(pav);
+	InputOutput_LISTAI_Antra_Strategija_BE_ALGORITMU(pav);
+	InputOutput_DEKAI_Antra_Strategija_BE_ALGORITMU(pav);
 }
-else
-{
-return false;
-}
-}
-};
 
-struct rusiavimas_listai_vargsiukai
+void nuskaitymas_2str_be_alg(std::string pav)
 {
-bool operator() (const Duomenys_Listai& a)
-{
-if (a.galutinis_vidurkis < 5)
-{
-return true;
-}
-else
-{
-return false;
-}
-}
-};
-
-struct rusiavimas_dekai_vargsiukai
-{
-bool operator() (const Duomenys_Dekai& a)
-{
-if (a.galutinis_vidurkis < 5)
-{
-return true;
-}
-else
-{
-return false;
-}
-}
-};*/
-
-void InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(std::string pav)
-
-{
-	std::vector<Duomenys_Vektoriai>Studentai;
-	std::vector<Duomenys_Vektoriai>Vargsiukai;
-
 	std::ifstream fd;
 	fd.open(pav);
 	if (!fd)
@@ -75,48 +38,78 @@ void InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(std::string pav)
 	}
 	else
 	{
-		int i = 0;
 		while (!fd.eof())
 		{
 			std::string Vardas;
 			std::string Pavarde;
-			std::vector<double>pazymiai;
+			double nd1;
+			double nd2;
+			double nd3;
+			double nd4;
+			double nd5;
 			double egzaminas;
 			fd >> Vardas;
+
 			fd >> Pavarde;
-			for (int i = 0; i < 5; i++)
-			{
-				double x;
-				fd >> x;
-				pazymiai.push_back(x);
-			}
+			fd >> nd1 >> nd2 >> nd3 >> nd4 >> nd5;
 			fd >> egzaminas;
 
 			// SKAICIAVIMAI GAL_VID, GAL_MED IR RUSIAVIMAS
-			double Gal_vid = Galutinis_Vidurkis(pazymiai, egzaminas);
-			double Gal_med = Galutinis_Mediana(pazymiai, egzaminas);
+			double Gal_vid = (egzaminas*0.6) + (((nd1 + nd2 + nd3 + nd4 + nd5) / 5)*0.4);
 
-			Duomenys_Vektoriai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med };
-			Studentai.push_back(something);
-
-			if (Gal_vid < 5)
+			double Gal_med;
+			double x[6];
+			x[0] = nd1;
+			x[1] = nd2;
+			x[2] = nd3;
+			x[3] = nd4;
+			x[4] = nd5;
+			x[5] = egzaminas;
+			for (int i = 0; i < 5; i++)
 			{
-				Vargsiukai.push_back(something);
-				Studentai.pop_back();
+				for (int j = i + 1; j < 6; j++)
+				{
+					double a;
+					if (x[i] > x[j])
+					{
+						a = x[i];
+						x[i] = x[j];
+						x[j] = a;
+					}
+				}
 			}
-			i++;
+			Gal_med = (x[2] + x[3]) / 2;
+
+			Duomenys something = { Vardas, Pavarde, nd1,nd2,nd3,nd4,nd5,egzaminas, Gal_vid, Gal_med };
+			Studentai_Vektoriai_2str_be_alg.push_back(something);
+			Studentai_Listai_2str_be_alg.push_back(something);
+			Studentai_Dekai_2str_be_alg.push_back(something);
 		}
 	}
+
+}
+
+void InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(std::string pav)
+
+{
+	std::vector<Duomenys>Vargsiukai;	
 	// SORTAS PAGAL VARDUS
-	std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Vektoriai_2);
+	std::sort(Studentai_Vektoriai_2str_be_alg.begin(), Studentai_Vektoriai_2str_be_alg.end(), Pagal_Varda_Vektoriai2);
+	auto start1 = std::chrono::high_resolution_clock::now();
 
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_vektoriai_vargsiukai());
-	//std::remove_if(Studentai.begin(), Studentai.end(), rusiavimas_vektoriai_vargsiukai());
-	//std::remove_copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_vektoriai_vargsiukai());
+	std::vector<Duomenys>::iterator it = Studentai_Vektoriai_2str_be_alg.begin();
+	for (auto i : Studentai_Vektoriai_2str_be_alg)
+	{
+		if (i.galutinis_vidurkis < 5)
+		{
+			Vargsiukai.push_back(i);
+			it = Studentai_Vektoriai_2str_be_alg.erase(it);
+		}
+	}
 
-	fd.close();
-
-
+	auto finish1 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> elapsed1 = finish1 - start1;
+	std::cout << "Programos vykdymo laikas su vektoriais: " << elapsed1.count() << " s\n";
 
 	std::ofstream fr;
 	fr.open("Rezultatai_Vektoriai.txt");
@@ -134,104 +127,63 @@ void InputOutput_VEKTORIUS_Antra_Strategija_BE_ALGORITMU(std::string pav)
 	fr.width(20); fr << std::left << "Kategorija";
 	fr << std::endl;
 
-	for (auto i : Studentai)
+	for (auto i : Studentai_Vektoriai_2str_be_alg)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS KIETAKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Kietiakas";
+
 		fr << std::endl;
 	}
 	for (auto i : Vargsiukai)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS VARGSIUKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Vargsiukas";
 		fr << std::endl;
-
-
-
-
 	}
 	fr.close();
 }
 void InputOutput_DEKAI_Antra_Strategija_BE_ALGORITMU(std::string pav)
 {
-	std::deque<Duomenys_Dekai>Studentai;
-	std::deque<Duomenys_Dekai>Vargsiukai;
-	std::ifstream fd;
-	fd.open(pav);
-	if (!fd)
+	
+	std::deque<Duomenys>Vargsiukai;
+	
+	// SORTAS PAGAL VARDUS
+	std::sort(Studentai_Dekai_2str_be_alg.begin(), Studentai_Dekai_2str_be_alg.end(), Pagal_Varda_Dekai2);
+
+	auto start2 = std::chrono::high_resolution_clock::now();
+	std::deque<Duomenys>::iterator it = Studentai_Dekai_2str_be_alg.begin();
+	for (auto i : Studentai_Vektoriai_2str_be_alg)
 	{
-		std::cerr << std::endl;
-		std::cerr << "Failas " << pav << " neegzistuoja." << std::endl;
-		std::cerr << std::endl;
-		main();
-	}
-	else
-	{
-		int i = 0;
-		while (!fd.eof())
+		if (i.galutinis_vidurkis < 5)
 		{
-			std::string Vardas;
-			std::string Pavarde;
-			std::deque<double>pazymiai;
-			double egzaminas;
-			fd >> Vardas;
-			fd >> Pavarde;
-			for (int i = 0; i < 5; i++)
-			{
-				double x;
-				fd >> x;
-				pazymiai.push_back(x);
-			}
-			fd >> egzaminas;
-
-			// SKAICIAVIMAI GAL_VID, GAL_MED IR RUSIAVIMAS
-			double Gal_vid = Galutinis_Vidurkis(pazymiai, egzaminas);
-			double Gal_med = Galutinis_Mediana(pazymiai, egzaminas);
-
-			Duomenys_Dekai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med };
-			Studentai.push_back(something);
-
-			if (Gal_vid < 5)
-			{
-				Vargsiukai.push_back(something);
-				Studentai.pop_back();
-			}
-			i++;
-
-
+			Vargsiukai.push_back(i);
+			it = Studentai_Dekai_2str_be_alg.erase(it);
 		}
 	}
-	// SORTAS PAGAL VARDUS
-	std::sort(Studentai.begin(), Studentai.end(), Pagal_Varda_Dekai_2);
 
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_dekai_vargsiukai());
-	//std::remove_if(Studentai.begin(), Studentai.end(), rusiavimas_dekai_vargsiukai());
-	//std::remove_copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_dekai_vargsiukai());
-
-	fd.close();
-
+	auto finish2 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> elapsed2 = finish2 - start2;
+	std::cout << "Programos vykdymo laikas su dekais: " << elapsed2.count() << " s\n";
 
 	std::ofstream fr;
 	fr.open("Rezultatai_Dekai.txt");
@@ -249,102 +201,62 @@ void InputOutput_DEKAI_Antra_Strategija_BE_ALGORITMU(std::string pav)
 	fr.width(20); fr << std::left << "Kategorija";
 	fr << std::endl;
 
-	for (auto i : Studentai)
+	for (auto i : Studentai_Dekai_2str_be_alg)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS KIETAKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Kietiakas";
+
 		fr << std::endl;
 	}
 	for (auto i : Vargsiukai)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS VARGSIUKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Vargsiukas";
 		fr << std::endl;
-
-
-
 	}
-
-
 	fr.close();
 }
 void InputOutput_LISTAI_Antra_Strategija_BE_ALGORITMU(std::string pav)
 {
-	std::list<Duomenys_Listai>Studentai;
-	std::list<Duomenys_Listai>Vargsiukai;
+	std::list<Duomenys>Vargsiukai;
+	// SORTAS PAGAL VARDUS
+	Studentai_Listai_2str_be_alg.sort(Pagal_Varda_Listai2);
 
-	std::ifstream fd;
-	fd.open(pav);
-	if (!fd)
+	auto start3 = std::chrono::high_resolution_clock::now();
+
+	std::list<Duomenys>::iterator it = Studentai_Listai_2str_be_alg.begin();
+	for (auto i : Studentai_Vektoriai_2str_be_alg)
 	{
-		std::cerr << std::endl;
-		std::cerr << "Failas " << pav << " neegzistuoja." << std::endl;
-		std::cerr << std::endl;
-		main();
-	}
-	else
-	{
-		int i = 0;
-		while (!fd.eof())
+		if (i.galutinis_vidurkis < 5)
 		{
-			std::string Vardas;
-			std::string Pavarde;
-			std::list<double>pazymiai;
-			double egzaminas;
-			fd >> Vardas;
-			fd >> Pavarde;
-			for (int i = 0; i < 5; i++)
-			{
-				double x;
-				fd >> x;
-				pazymiai.push_back(x);
-			}
-			fd >> egzaminas;
-			double Gal_vid = Galutinis_Vidurkis(pazymiai, egzaminas);
-			double Gal_med = Galutinis_Mediana(pazymiai, egzaminas);
-
-			Duomenys_Listai something = { Vardas,Pavarde,pazymiai,egzaminas,Gal_vid,Gal_med };
-			Studentai.push_back(something);
-
-			if (Gal_vid < 5)
-			{
-				Vargsiukai.push_back(something);
-				Studentai.pop_back();
-			}
-			i++;
+			Vargsiukai.push_back(i);
+			it = Studentai_Listai_2str_be_alg.erase(it);
 		}
 	}
-	// SORTAS PAGAL VARDUS
-	Studentai.sort(Pagal_Varda_Listai_2);
 
-	//std::copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_listai_vargsiukai());
-	//std::remove_if(Studentai.begin(), Studentai.end(), rusiavimas_listai_vargsiukai());
-	//std::remove_copy_if(Studentai.begin(), Studentai.end(), std::back_inserter(Vargsiukai), rusiavimas_listai_vargsiukai());
-
-
-	fd.close();
+	auto finish3 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> elapsed3 = finish3 - start3;
+	std::cout << "Programos vykdymo laikas su listais: " << elapsed3.count() << " s\n";
 
 	std::ofstream fr;
 	fr.open("Rezultatai_Listai.txt");
@@ -362,43 +274,38 @@ void InputOutput_LISTAI_Antra_Strategija_BE_ALGORITMU(std::string pav)
 	fr.width(20); fr << std::left << "Kategorija";
 	fr << std::endl;
 
-	for (auto i : Studentai)
+	for (auto i : Studentai_Listai_2str_be_alg)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS KIETAKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Kietiakas";
+
 		fr << std::endl;
 	}
 	for (auto i : Vargsiukai)
 	{
-		//SPAUSDINIMAS
-
+		//SPAUSDINIMAS VARGSIUKUS
 		fr.width(15); fr << std::left << i.Pavarde;
 		fr.width(15); fr << std::left << i.Vardas;
-		for (auto j : i.pazymiai)
-		{
-			fr.width(15); fr << std::left << j;
-		}
+		fr.width(15); fr << std::left << i.nd1;
+		fr.width(15); fr << std::left << i.nd2;
+		fr.width(15); fr << std::left << i.nd3;
+		fr.width(15); fr << std::left << i.nd4;
+		fr.width(15); fr << std::left << i.nd5;
 		fr.width(15); fr << std::left << i.egzaminas;
 		fr.width(20); fr << std::left << std::setprecision(3) << i.galutinis_vidurkis;
 		fr.width(20); fr << std::left << i.galutinis_mediana;
-
 		fr.width(20); fr << std::left << "Vargsiukas";
 		fr << std::endl;
-
-
-
-
 	}
 	fr.close();
 }
