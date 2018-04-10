@@ -36,7 +36,7 @@ Patobulinus 1.0v gaunami stai tokie rezultatai:
 4. Header GUARD faile 'Struktura.h' yra neteisingas.(Pataisyta)
 5. Truksta v0.5 releaso.(Pataisyta)
 
-
+PATAISYTA VISKAS
 
 # 0.4v
 0,4v pakeisti keli headeriai, pridėtas failų generatorius pagal vartotojo poreikius (galima nustatyti norima failo dydį, t.y. 10, 100, 1000 ir t.t. random studentų). Įvykdyti matavimai parodė, kad generuojant ir apdorojant duomenis programa atliko tai per:
