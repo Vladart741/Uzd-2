@@ -1,4 +1,4 @@
-#1.0v patobulinta
+# 1.0v patobulinta
 
 Patobulinus 1.0v gaunami stai tokie rezultatai:
 
