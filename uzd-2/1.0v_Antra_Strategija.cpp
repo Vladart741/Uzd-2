@@ -146,7 +146,7 @@ void InputOutput_VEKTORIUS_Antra_Strategija(std::string pav)
 	auto start1 = std::chrono::high_resolution_clock::now();
 
 	std::copy_if(Studentai_Vektoriai_2str_su_alg.begin(), Studentai_Vektoriai_2str_su_alg.end(), std::back_inserter(Vargsiukai), rusiavimas_vektoriai_vargsiukai());
-	std::remove_if(Studentai_Vektoriai_2str_su_alg.begin(), Studentai_Vektoriai_2str_su_alg.end(), rusiavimas_vektoriai_vargsiukai());
+	Studentai_Vektoriai_2str_su_alg.erase(std::remove_if(Studentai_Vektoriai_2str_su_alg.begin(), Studentai_Vektoriai_2str_su_alg.end(), rusiavimas_vektoriai_vargsiukai()));
 
 	auto finish1 = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> elapsed1 = finish1 - start1;
@@ -214,7 +214,7 @@ void InputOutput_DEKAI_Antra_Strategija(std::string pav)
 	auto start2 = std::chrono::high_resolution_clock::now();
 	
 	std::copy_if(Studentai_Dekai_2str_su_alg.begin(), Studentai_Dekai_2str_su_alg.end(), std::back_inserter(Vargsiukai), rusiavimas_dekai_vargsiukai());
-	std::remove_if(Studentai_Dekai_2str_su_alg.begin(), Studentai_Dekai_2str_su_alg.end(), rusiavimas_dekai_vargsiukai());
+	Studentai_Dekai_2str_su_alg.erase(std::remove_if(Studentai_Dekai_2str_su_alg.begin(), Studentai_Dekai_2str_su_alg.end(), rusiavimas_dekai_vargsiukai()));
 
 	auto finish2 = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> elapsed2 = finish2 - start2;
@@ -282,7 +282,7 @@ void InputOutput_LISTAI_Antra_Strategija(std::string pav)
 	auto start3 = std::chrono::high_resolution_clock::now();
 	
 	std::copy_if(Studentai_Listai_2str_su_alg.begin(), Studentai_Listai_2str_su_alg.end(), std::back_inserter(Vargsiukai), rusiavimas_listai_vargsiukai());
-	std::remove_if(Studentai_Listai_2str_su_alg.begin(), Studentai_Listai_2str_su_alg.end(), rusiavimas_listai_vargsiukai());
+	Studentai_Listai_2str_su_alg.erase(std::remove_if(Studentai_Listai_2str_su_alg.begin(), Studentai_Listai_2str_su_alg.end(), rusiavimas_listai_vargsiukai()));
 
 	auto finish3 = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> elapsed3 = finish3 - start3;
